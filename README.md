@@ -6,6 +6,9 @@ Welcome to "Pigeon Impossible," where the birds have had enough of your nonsense
 
 You're just an innocent bystander trying to navigate the mean streets of Pigeon City. But these feathered fiends have other plans. They're dropping "presents" from above, and trust us, you don't want these gifts!
 
+## Let's play / Demo:
+[Play Pigeon Impossible here on Github](https://stfnfrnk.github.io/pigeon-impossible-game/)
+
 ## Features:
 
 1. **Raining Chaos**: Catch those refreshing raindrops like your life depends on it (because it does)! But beware the occasional poisonous green drop - it's not a power-up, it's a power-down! Who knew acid rain could be so literal?
