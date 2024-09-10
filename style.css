@@ -1,0 +1,233 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+#game-area {
+    width: 100%;
+    height: 100%;
+    background-color: skyblue;
+    position: relative;
+}
+#player {
+    width: 40px;
+    height: 80px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('pixel-art-bird-poop-surprise-removebg-preview.png') no-repeat center/contain;
+    z-index: 1000; /* Increase z-index */
+}
+.pigeon {
+    width: 60px;
+    height: 40px;
+    position: absolute;
+    background: url('pixel-art-pigeon-svg-removebg-preview.png') no-repeat center/contain;
+    transition: transform 0.5s;
+}
+.falling {
+    transform: rotate(180deg);
+}
+.poop {
+    width: 10px;
+    height: 15px;
+    position: absolute;
+    background-color: white;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+}
+.golden-poop {
+    background-color: gold;
+}
+.raindrop {
+    width: 6px;
+    height: 12px;
+    position: absolute;
+    background-color: #4fc3f7;
+    border-radius: 50%;
+    box-shadow: 0 0 2px #4fc3f7;
+}
+.raindrop.poisonous {
+    background-color: lime;
+    width: 7px;
+    height: 14px;
+}
+.splash-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: all 0.5s ease-out;
+}
+#score, #time {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    color: white;
+}
+#score {
+    left: 10px;
+}
+#time {
+    right: 10px;
+}
+#game-over {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Bangers', cursive;
+}
+
+#game-over h2 {
+    font-size: 72px;
+    color: #4a2f1d;
+    margin: 0 0 20px 0;
+}
+
+#game-over p {
+    font-size: 48px;
+    color: #6a4f3d;
+    margin: 10px 0;
+}
+
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: skyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#intro-container {
+    position: relative;
+    display: inline-block;
+    padding-top: 0; /* Remove top padding */
+}
+
+#intro-title {
+    font-family: 'Bangers', cursive;
+    font-size: 72px;
+    color: #4a2f1d;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    margin-top: 0; /* Remove top margin */
+    padding-top: 60px; /* Add padding to the title to make room for the pigeon */
+}
+
+#intro-pigeon {
+    position: absolute;
+    width: 100px;
+    height: 67px;
+    background: url('pixel-art-pigeon-svg-removebg-preview.png') no-repeat center/contain;
+    top: 0; /* Position at the top of the container */
+    left: 50%;
+    transform: translateX(-50%) scaleX(-1);
+    animation: pigeonFlyIn 2s ease-out forwards, pigeonIdle 2s infinite alternate;
+}
+
+@keyframes pigeonFlyIn {
+    0% {
+        top: -100px;
+        transform: translateX(-50%) scaleX(-1) rotate(20deg);
+    }
+    100% {
+        top: 0;
+        transform: translateX(-50%) scaleX(-1) rotate(0deg);
+    }
+}
+
+@keyframes pigeonIdle {
+    0% {
+        transform: translateX(-50%) scaleX(-1) translateY(0);
+    }
+    100% {
+        transform: translateX(-50%) scaleX(-1) translateY(-3px);
+    }
+}
+
+.poop-drop {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.poop-splash {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: poopSplash 0.5s ease-out;
+}
+
+@keyframes poopSplash {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(1);
+        opacity: 0;
+    }
+}
+
+#start-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-family: 'Bangers', cursive;
+    background-color: #4a2f1d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover {
+    background-color: #6a4f3d;
+}
+
+#play-again-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-family: 'Bangers', cursive;
+    background-color: #4a2f1d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#play-again-button:hover {
+    background-color: #6a4f3d;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10px); }
+    to { transform: translateY(100vh); }
+}
+.raindrop, .poop {
+    animation: fall linear;
+}
